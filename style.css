@@ -1,0 +1,83 @@
+/* 自訂樣式與動態效果 - 今天吃什麼？Daily Food Wheel */
+
+/* 隱藏滾動條但保持滾動 */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 柔和平滑滾動條 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #E5E7EB;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D1D5DB;
+}
+
+/* 轉盤外環立體高光與漸層 */
+#wheelCanvas {
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.05));
+  transition: transform 0.1s ease-out;
+}
+
+/* 指針立體微晃動特效 */
+@keyframes pointerJiggle {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-2px) rotate(3deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+.pointer-animating {
+  animation: pointerJiggle 0.12s ease-in-out infinite;
+}
+
+/* 按鈕按壓微交互 */
+.active-speed {
+  background-color: #FFF7ED !important;
+  color: #EA580C !important;
+  border-color: #FDBA74 !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* 分類 Pill 樣式動態過渡 */
+.category-pill {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.category-pill.active {
+  background-color: #1C1917;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px -2px rgba(28, 25, 23, 0.25);
+  transform: translateY(-1px);
+}
+
+.category-pill.inactive {
+  background-color: #FFFFFF;
+  color: #57534E;
+  border: 1px solid #E7E5E4;
+}
+
+.category-pill.inactive:hover {
+  background-color: #F5F5F4;
+  color: #1C1917;
+  border-color: #D6D3D1;
+}
+
+/* 項目切換動畫 */
+.food-item-row {
+  transition: all 0.15s ease-in-out;
+}
+.food-item-row:hover {
+  background-color: #FAFAF9;
+}
